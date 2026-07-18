@@ -1,0 +1,45 @@
+<?php
+$menuItems = [
+    ['key' => 'dashboard',     'label' => 'Dashboard',       'href' => 'dashboard.php'],
+    ['key' => 'data_event',    'label' => 'Data Event',      'href' => 'events.php'],
+    ['key' => 'tambah_event',  'label' => 'Tambah Event',    'href' => 'add_event.php'],
+    ['key' => 'statistik',     'label' => 'Statistik',       'href' => '#'],
+    ['key' => 'agenda',        'label' => 'Agenda Hari ini', 'href' => '#'],
+    ['key' => 'pengaturan',    'label' => 'Pengaturan',      'href' => '#'],
+];
+
+$adminName = $_SESSION['admin_name'] ?? 'Admin';
+?>
+<aside class="sidebar">
+
+  <a href="dashboard.php" class="sidebar-brand">
+    <span class="brand-mark zoomable"><img src="../assets/img/logo-kampus.jpg" alt="Logo Smart Event Campus"></span>
+    <span class="brand-text">
+      <strong>SMART EVENT<br>CAMPUS</strong>
+    </span>
+  </a>
+
+  <nav class="sidebar-nav">
+    <div class="nav-label">Menu</div>
+    <?php foreach ($menuItems as $item): ?>
+      <a href="<?= $item['href'] ?>" class="<?= (($activePage ?? '') === $item['key']) ? 'active' : '' ?>">
+        <span class="dot"></span><?= $item['label'] ?>
+      </a>
+    <?php endforeach; ?>
+    <a href="../logout.php" class="logout">
+      <span class="dot"></span>Logout
+    </a>
+  </nav>
+
+  <div class="sidebar-foot" style="flex-direction:column; align-items:flex-start; gap:10px;">
+    <div style="display:flex; align-items:center; gap:10px;">
+      <img src="../assets/img/logo-kampus.jpg" alt="Logo" class="zoomable" style="width:22px;height:22px;border-radius:50%;object-fit:cover;flex-shrink:0;">
+      <span>Universitas Potensi Utama</span>
+    </div>
+    <div style="display:flex; align-items:center; gap:10px;">
+      <span class="mono"><?= strtoupper(substr($adminName, 0, 1)) ?></span>
+      <span><?= htmlspecialchars($adminName) ?></span>
+    </div>
+  </div>
+
+</aside>

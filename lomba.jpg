@@ -1,0 +1,17 @@
+<?php
+$adminName = $_SESSION['admin_name'] ?? 'Admin';
+?>
+<div class="content-topbar">
+  <div>
+    <h1><?= htmlspecialchars($pageTitle ?? '') ?></h1>
+    <div class="crumb"><?= htmlspecialchars($pageCrumb ?? '') ?></div>
+  </div>
+
+  <div class="profile-chip">
+    <div class="avatar"><?= strtoupper(substr($adminName, 0, 1)) ?></div>
+    <div class="who">
+      <strong><?= htmlspecialchars($adminName) ?></strong>
+      <span>Administrator</span>
+    </div>
+  </div>
+</div>
